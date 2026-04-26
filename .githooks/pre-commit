@@ -12,7 +12,7 @@ fi
 for DATASET_ARCHIVE in $(git diff --name-only --staged -- '*.zip'); do
 	ARCHIVE_FILES=$(zipinfo -1 "$DATASET_ARCHIVE")
 	ARCHIVE_CONTENTS_FILE="${DATASET_ARCHIVE%.zip}.txt"
-	echo "$ARCHIVE_FILES" >"$ARCHIVE_CONTENTS_FILE"
+	echo "$ARCHIVE_FILES" | sort >"$ARCHIVE_CONTENTS_FILE"
 	git add "$ARCHIVE_CONTENTS_FILE"
 
 	HASH_FILE="${DATASET_ARCHIVE%.zip}.sha256"
